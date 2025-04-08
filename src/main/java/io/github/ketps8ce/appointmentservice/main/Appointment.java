@@ -1,3 +1,10 @@
+// Author: Hunter Marx
+// Date: 04/08/2025
+// Course ID: 
+// Description: This is the Appointment class. It creates and stores Appointments.
+// See the Constructor for more info.
+
+
 package io.github.ketps8ce.appointmentservice.main;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.Date;
@@ -7,26 +14,27 @@ public class Appointment {
 	
 	//variables and objects
 	private final String appointmentID;
-	private String date;
+	private Date date;
 	private String description;
 	private static AtomicLong idGenerator = new AtomicLong();
 
 	//CONSTRUCTOR
 
-	public Appointment(String appointmentID, String name, String date, String description) {
+	public Appointment(String name, Date date, String description) {
 		
 		//APPOINTMENTID
 		this.appointmentID = String.valueOf(idGenerator.getAndIncrement());
 		
 		//DATE
-		//??????????????????????????????????
-		if (date == null || date.isBlank()) {
-			this.date = "NULL";
-		} else if (//in the past)
-			//output an error
-			else {
-				this.date = date;
-			}
+		if (date == null) {
+			this.date = new Date();
+		}
+		else if (date.before(new Date())) { //if date is before the present date
+			this.date = new Date(); //change the date to the present date 
+		} else {
+			this.date = date;
+		}
+			
 		
 		//DESCRIPTION
 		if (description == null || description.isBlank()) {
@@ -44,7 +52,7 @@ public class Appointment {
 		return appointmentID;
 	}
 	
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 	
@@ -55,10 +63,20 @@ public class Appointment {
 	//SETTERS
 	
 	//set date
+	public void setDate(Date date) {
+	if (date == null) {
+		this.date = new Date();
+	}
+	else if (date.before(new Date())) { //if date is before the present date
+		this.date = new Date(); //change the date to the present date 
+	} else {
+		this.date = date;
+	}
+}
 	
 	
 	public void setDescription(String appointmentID, String description) {
-		this.description = description;
+		this.description = (description == null || description.isBlank()) ? "NULL" :
 		description.substring(0, Math.min(description.length(), 50));
 	}
 	
