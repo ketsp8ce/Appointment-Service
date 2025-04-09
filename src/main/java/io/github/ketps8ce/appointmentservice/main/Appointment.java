@@ -9,7 +9,7 @@ package io.github.ketps8ce.appointmentservice.main;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.Date;
 
-
+import io.github.ketps8ce.appointmentservice.main.Appointment;
 public class Appointment {
 	
 	//variables and objects
@@ -20,7 +20,7 @@ public class Appointment {
 
 	//CONSTRUCTOR
 
-	public Appointment(String name, Date date, String description) {
+	public Appointment(String appointmentID, Date date, String description) {
 		
 		//APPOINTMENTID
 		this.appointmentID = String.valueOf(idGenerator.getAndIncrement());

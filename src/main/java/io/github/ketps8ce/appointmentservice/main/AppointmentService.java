@@ -1,6 +1,9 @@
 package io.github.ketps8ce.appointmentservice.main;
 import java.util.ArrayList;
+
 import java.util.Date;
+
+import io.github.ketps8ce.appointmentservice.main.Appointment;
 
 
 public class AppointmentService {
@@ -35,6 +38,19 @@ public class AppointmentService {
 			}
 		}
 		
+		
+		public Appointment getAppointment(String appointmentID) { 
+		    for (Appointment appointment : appointmentList) { //iterate through list
+		        if (appointment.getAppointmentID().equals(appointmentID)) { //when we find the match .....
+		            return appointment; //return the information stored in its address
+		        }
+		    }
+		    return null;
+		}
+
+		public ArrayList<Appointment> getAppointmentList() {
+		    return appointmentList;
+		}
 	
 
 }
